@@ -34,3 +34,7 @@ The custom functions used in this study are provided in the 'Matlab_toolbox_2_CS
 2. Scripts and Data
 All plotting scripts are named using the format: Figure*_* where each script corresponds to a specific figure in the main manuscript and is used to reproduce the associated results and visualizations.
 The data required for plotting are provided in MATLAB Data format (.mat) and can be loaded using the MATLAB command: load *.mat.
+
+Note:
+Due to GitHub file size limits, some .mat files are split into multiple volumes.
+To Extract: Download all .z01, .z02 ... and .zip files into the same folder, then extract the .zip file.
