@@ -6,7 +6,7 @@ The Reservoir module
 Coupled with the Routing module (linear routing scheme) to enable multi-objective outflow regulation.
 
 The Carbon module 
-Following Noah-MP scheme, which is available at https://github.com/riems/land
+Following Noah-MP scheme, which is available at https://github.com/NCAR/noahmp/tree/master
 
 The Glacier module
 
