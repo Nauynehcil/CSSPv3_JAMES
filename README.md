@@ -2,11 +2,13 @@ This repository provides the newly developed modules within CSSPv3, i.e., irriga
 
 Reference:
 
-[1] X. Yuan*., C. Li, P. Ji, XZ. Xi, SW. Li, Y. Jiao, H. Yi, XZ. Liang, QC. Zeng, 2026:  Development and evaluation of Conjunctive Surface-Subsurface Process Model version 3 (CSSPv3) at global scale. Journal of Advances in Modeling Earth Systems. Revised.
+[1] Yuan, X.*, C. Li, P. Ji, X.-Z. Xi, S.-W. Li, Y. Jiao, H. Yi, X.-Z. Liang, Q.-C. Zeng (2026), Development and evaluation of Conjunctive Surface-Subsurface Process Model version 3 (CSSPv3) at global scale. Journal of Advances in Modeling Earth Systems. Revised.
 
-[2] Li, C.,  X. Yuan*,  Y. Jiao,  P. Ji,  Z. Huang,  2024: High-resolution Land Surface Modeling of the Irrigation Effects on Evapotranspiration over the Yellow River Basin. Journal of Hydrology, 633, 130986. 
+[2] Li, C., X. Yuan*, Y. Jiao, P. Ji, Z.-W. Huang (2024), High-resolution land surface modeling of the irrigation effects on evapotranspiration over the Yellow River Basin. Journal of Hydrology, 633, 130986.
 
-[3] Xi, X., X. Yuan*, & Yi. Hao, 2026: High-resolution land surface modeling of climate and CO2 effects on ecosystem carbon-water coupling across the Qinghai-Tibet Plateau. Agricultural and Forest Meteorology, 385, 111195.
+[3] Xi, X., X. Yuan*, Y. Hao (2026), High-resolution land surface modeling of climate and CO₂ effects on ecosystem carbon–water coupling across the Qinghai–Tibet Plateau. Agricultural and Forest Meteorology, 385, 111195.
+
+[4] Li, S., X. Yuan (2026), Evaluation of a land surface–glacier coupled model over the Three-River Headwaters Region in the Qinghai–Tibet Plateau. Water, 18, 1030. https://doi.org/10.3390/w18091030
 
 The main folders and files are described as follows:
 1) Newly Modules Within CSSPv3. Including, irrigation, reservoir and glacier modules. The Carbon module is following Noah-MP scheme, which is available at https://github.com/NCAR/noahmp/blob/master/src/CarbonFluxNatureVegMod.F90
