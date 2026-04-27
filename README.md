@@ -1,4 +1,9 @@
-This repository provides the processed outputs and scripts associated with the study: “Development and evaluation of the Conjunctive Surface–Subsurface Process Model version 3 (CSSPv3) at global scale”.
+This repository provides the newly developed modules within CSSPv3, i.e., irrigation, reservoir and glacier modules. And the processed outputs and scripts associated with the study: “Development and evaluation of the Conjunctive Surface–Subsurface Process Model version 3 (CSSPv3) at global scale”.
+
+Reference:
+[1] X. Yuan*., C. Li, P. Ji, XZ. Xi, SW. Li, Y. Jiao, H. Yi, XZ. Liang, QC. Zeng, 2026:  Development and evaluation of Conjunctive Surface-Subsurface Process Model version 3 (CSSPv3) at global scale. Journal of Advances in Modeling Earth Systems. Revised.
+[2] Li, C.,  X. Yuan*,  Y. Jiao,  P. Ji,  Z. Huang,  2024: High-resolution Land Surface Modeling of the Irrigation Effects on Evapotranspiration over the Yellow River Basin. Journal of Hydrology, 633, 130986. 
+[3] Xi, X., X. Yuan*, & Yi. Hao, 2026: High-resolution land surface modeling of climate and CO2 effects on ecosystem carbon-water coupling across the Qinghai-Tibet Plateau. Agricultural and Forest Meteorology, 385, 111195. https://doi.org/10.1016/j.agrformet.2026.111195
 
 The main folders and files are described as follows:
 1)	Matlab_toolbox_2_CSSPv3
