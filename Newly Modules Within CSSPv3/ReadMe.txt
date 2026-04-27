@@ -17,7 +17,7 @@ Please cite the following papers in your publications:
 
 [3] Xi, X., X. Yuan*, Y. Hao (2026), High-resolution land surface modeling of climate and CO₂ effects on ecosystem carbon–water coupling across the Qinghai–Tibet Plateau. Agricultural and Forest Meteorology, 385, 111195.
 
-[4] Li, S., X. Yuan (2026), Evaluation of a land surface–glacier coupled model over the Three-River Headwaters Region in the Qinghai–Tibet Plateau. Water, 18, 1030. https://doi.org/10.3390/w18091030
+[4] Li, S., X. Yuan (2026), Evaluation of a land surface–glacier coupled model over the Three-River Headwaters Region in the Qinghai–Tibet Plateau. Water, 18, 1030.
 
 
 
