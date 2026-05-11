@@ -1,3 +1,6 @@
+#include "configs.inc"
+
+#ifdef Sub_glc
 ! ============================================================================
 ! MODULE_GLACIER
 !
@@ -29,7 +32,6 @@
 !       Coupled Model over the Three-River Headwaters Region. Water, 18, 1030.
 ! ============================================================================
 module MODULE_GLACIER
-#include "configs.inc"
       USE shr_kind_mod, ONLY: r8 => shr_kind_rn
       USE module_sf_clm_constant
       IMPLICIT NONE
@@ -42,7 +44,6 @@ module MODULE_GLACIER
 
       ! PRIVATE MEMBER FUNCTIONS:
       private :: groundfluxes_glacier
-      private :: glacier_surface_temperature
       private :: groundtem_glacier
       PRIVATE :: combo_glc
       private :: winddriftcompaction_glc
@@ -1085,7 +1086,8 @@ module MODULE_GLACIER
       REAL(r8), INTENT(IN)    :: ht               ! Observation height for temperature [m]
       REAL(r8), INTENT(IN)    :: fact(lb:)         ! Temperature correction factor [K]
       REAL(r8), INTENT(IN)    :: brr(lb:)          ! Heat flux coefficient [W/m²K]
-
+      real(r8), INTENT(in)    :: dz(lb:nl_ice)
+      integer, INTENT(IN)     :: ipr, jpr
       ! In-out variables
       REAL(r8), INTENT(INOUT) :: hs               ! Heat storage [J/m²]
       REAL(r8), INTENT(IN)    :: dhsdT            ! Temperature change in snow/ice layer [K/s]
@@ -1444,7 +1446,7 @@ module MODULE_GLACIER
       real(r8) :: vol_liq(lb:0), vol_ice(lb:0), eff_porosity(lb:0)
       real(r8) :: total_runoff, max_allowed_mass, excess_mass, removed_mass
       real(r8) :: space_next_m, q_pot_m, q_real_m, q_bypass_m
-      
+
     ! Update ice and liquid mass at top layer
       wgdif = wice(lb) + (qfros - qsubl)*dtime
       wice(lb) = wgdif
@@ -2510,3 +2512,4 @@ module MODULE_GLACIER
 
 !----------------------------------------------------------------------------
       END MODULE MODULE_GLACIER
+#endif
