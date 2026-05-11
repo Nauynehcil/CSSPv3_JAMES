@@ -1424,58 +1424,28 @@ module MODULE_GLACIER
       ! Li, S., and X. Yuan (2026): Evaluation of a Land Surface-Glacier
 !     ! Coupled Model over the Three-River Headwaters Region. Water, 18, 1030.
       ! ======================================================================
-      SUBROUTINE GLACIER_WATER(nl_ice, nl_snow, dtime, &
-                              z, dz, zi, tss, &
-                              wliq, wice, pg_rain, pg_snow, &
-                              sm, scv, snowdp, imelt, &
-                              fiold, snl, qseva, qsdew, &
-                              qsubl, qfros, gwat, &
-                              us, vs, melt, ipr, jpr)
+      subroutine snowwater(lb, dtime, &
+                           pg_rain, qseva, qsdew, qsubl, qfros, &
+                           dz, wice, wliq, qout_snowb)
 
       USE shr_kind_mod, ONLY: r8 => shr_kind_rn
-      USE module_sf_clm_constant, ONLY : denice, denliq, tfrz, wimp, wssi
+      use module_sf_clm_constant, only : denice, denliq, wssi, wimp
+      implicit none
 
-      IMPLICIT NONE
+      integer,  INTENT(in) :: lb
+      real(r8), INTENT(in) :: dtime, dz(lb:0)
+      real(r8), INTENT(in) :: pg_rain, qseva, qsdew, qsubl, qfros
 
-      ! Input variables
-      INTEGER,  INTENT(IN)    :: nl_ice        ! Upper bound of ice/snow column
-      INTEGER,  INTENT(IN)    :: nl_snow       ! Number/index of snow layers
-      INTEGER,  INTENT(IN)    :: ipr           ! Grid index in x-direction
-      INTEGER,  INTENT(IN)    :: jpr           ! Grid index in y-direction
+      real(r8), INTENT(inout) :: wice(lb:0), wliq(lb:0)
+      real(r8), INTENT(out)   :: qout_snowb  ! Water outflow from snow bottom [mm/s]
 
-      REAL(r8), INTENT(IN)    :: dtime         ! Time step [s]
-      REAL(r8), INTENT(IN)    :: pg_rain       ! Rainfall rate [kg m-2 s-1]
-      REAL(r8), INTENT(IN)    :: pg_snow       ! Snowfall rate [kg m-2 s-1]
-      REAL(r8), INTENT(IN)    :: sm            ! Surface melt rate or snow melt source term
-      REAL(r8), INTENT(IN)    :: qseva         ! Ground evaporation flux [kg m-2 s-1]
-      REAL(r8), INTENT(IN)    :: qsdew         ! Dew deposition flux [kg m-2 s-1]
-      REAL(r8), INTENT(IN)    :: qsubl         ! Sublimation flux [kg m-2 s-1]
-      REAL(r8), INTENT(IN)    :: qfros         ! Frost deposition flux [kg m-2 s-1]
-      REAL(r8), INTENT(IN)    :: melt          ! Meltwater production
-      REAL(r8), INTENT(IN)    :: us            ! Zonal wind speed [m s-1]
-      REAL(r8), INTENT(IN)    :: vs            ! Meridional wind speed [m s-1]
-
-      REAL(r8), INTENT(IN)    :: fiold(nl_snow+1:nl_ice)   ! Previous ice fraction or layer ice state
-      INTEGER,  INTENT(IN)    :: imelt(nl_snow+1:nl_ice)   ! Melt flag for each layer
-
-      ! In-out variables
-      INTEGER,  INTENT(INOUT) :: snl           ! Number of active snow layers
-
-      REAL(r8), INTENT(INOUT) :: z(nl_snow+1:nl_ice)       ! Layer midpoint depth [m]
-      REAL(r8), INTENT(INOUT) :: dz(nl_snow+1:nl_ice)      ! Layer thickness [m]
-      REAL(r8), INTENT(INOUT) :: zi(nl_snow:nl_ice)        ! Layer interface depth [m]
-      REAL(r8), INTENT(INOUT) :: tss(nl_snow+1:nl_ice)     ! Snow/ice layer temperature [K]
-      REAL(r8), INTENT(INOUT) :: wice(nl_snow+1:nl_ice)    ! Ice mass in each layer [kg m-2]
-      REAL(r8), INTENT(INOUT) :: wliq(nl_snow+1:nl_ice)    ! Liquid water mass in each layer [kg m-2]
-      REAL(r8), INTENT(INOUT) :: scv                       ! Snow water equivalent [kg m-2]
-      REAL(r8), INTENT(INOUT) :: snowdp                    ! Snow depth [m]
-
-      ! Output variables
-      REAL(r8), INTENT(OUT)   :: gwat          ! Net water input from the surface [mm s-1]
-
-      ! Local variables
-      INTEGER                 :: lb            ! Lower bound of active snow/ice column
-      ! Update ice and liquid mass at top layer
+      integer  :: j
+      real(r8) :: qin, qout, zwice, wgdif
+      real(r8) :: vol_liq(lb:0), vol_ice(lb:0), eff_porosity(lb:0)
+      real(r8) :: total_runoff, max_allowed_mass, excess_mass, removed_mass
+      real(r8) :: space_next_m, q_pot_m, q_real_m, q_bypass_m
+      
+    ! Update ice and liquid mass at top layer
       wgdif = wice(lb) + (qfros - qsubl)*dtime
       wice(lb) = wgdif
       if (wgdif < 0.) then
