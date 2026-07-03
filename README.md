@@ -2,7 +2,7 @@ This repository provides the newly developed modules within CSSPv3, i.e., irriga
 
 Reference:
 
-[1] Yuan, X.*, C. Li, P. Ji, X.-Z. Xi, S.-W. Li, Y. Jiao, H. Yi, X.-Z. Liang, Q.-C. Zeng (2026), Development and evaluation of Conjunctive Surface-Subsurface Process Model version 3 (CSSPv3) at global scale. Journal of Advances in Modeling Earth Systems. Revised.
+[1] Yuan, X.*, C. Li, P. Ji, X.-Z. Xi, S.-W. Li, Y. Jiao, H. Yi, X.-Z. Liang, Q.-C. Zeng (2026), Development and evaluation of Conjunctive Surface-Subsurface Process Model version 3 (CSSPv3) at global scale. Journal of Advances in Modeling Earth Systems, 18, e2025MS005440. https://doi.org/10.1029/2025MS005440
 
 [2] Li, C., X. Yuan*, Y. Jiao, P. Ji, Z.-W. Huang (2024), High-resolution land surface modeling of the irrigation effects on evapotranspiration over the Yellow River Basin. Journal of Hydrology, 633, 130986.
 
